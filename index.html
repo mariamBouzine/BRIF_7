@@ -18,7 +18,7 @@
             <br>
             <label>Son prix :</label> 
             <input type="text" id="prix" />
-            <p class="validation" ></p>
+            <p class="validation" id="msgPrix" ></p>
             <br>
             <label>Sa date de publication :</label> 
             <input type="date" id="date" />
@@ -26,7 +26,7 @@
             <br>
             <label>Sa langue :</label>
             <select id="langue" name="langue">
-                <option value="0">-- select langue--</option>
+                <option disabled selected hidden value="0">-- select langue--</option>
                 <option value="Français">Français</option>
                 <option value="Anglais">Anglais</option>
                 <option value="Arabe">Arabe</option>
@@ -53,47 +53,61 @@
         var valida= document.getElementsByClassName("validation");
         var radioCheck=document.getElementById("radiobtn");
         var input = document.getElementsByTagName("input");
-
+        var langue=document.getElementById("langue");
+        var msgPrix=document.getElementById("msgPrix");
         function validation(e){
             
+            //////require:
             e.preventDefault();
             for(var i = 0; i<input.length-4;i++){
                 if (input[i].value == ""){
                     input[i].nextElementSibling.innerHTML="stop";
-                    
+                    input[i].style.borderColor="red"
                 }
                 else{
-                    input[i].nextElementSibling.innerHTML="valider";
+                    // input[i].nextElementSibling.innerHTML="valider";
+                    input[i].style.borderColor="green"
                 }
             }
-            
+            //////require RADIO
             var getSelectedValue = document.querySelector(   
                  'input[name="season"]:checked');   
                 
-                 if(getSelectedValue != null) {   
-                   document.getElementById("radiobtn").innerHTML   
-                       = getSelectedValue.value   
-                       + " season is selected";   
-                }   
-                else {   
-                   document.getElementById("Error").innerHTML   
-                       = "*You have not selected any season";   
-                }   
-          
-                var check=document.getElementById("langue");
-                //var strUser=check.options[check.SelectedIndex].value;
-                if(strUser=="0")
-                {
-                    alert("ttttttt")
-                    return false;
-                    // document.getElementById("lng").innerHTML="plz select"
-                }
+            if(getSelectedValue != null) {   
+                document.getElementById("radiobtn").innerHTML = getSelectedValue.value + " season is selected";   
+            }   
+            else {   
+                document.getElementById("radiobtn").innerHTML = "*You have not selected any season";   
+            } 
+            
+            //////require drop
+            if(langue.value=="0")
+            {
+                lng.innerHTML="Please select an option!";
+                langue.style.borderColor="red"
+            }
+            else{
+                lng.innerHTML="valider";
+                langue.style.borderColor="green"
+                
+            }
+            if(!isNaN(Prix.value) && Prix.value !=="" && Prix.value>0)
+            {
+                msgPrix.innerHTML="valider";
+            }
+            else{
+                msgPrix.innerHTML="error";
+            }
+            
 
         }
         document.getElementsByTagName("form")[0].addEventListener('submit', validation);
 
+
+
+        ///////////chaînes de caractères d'une longueur maximale de 30
         (function(){ document.addEventListener("keyup", function(event){ 
-            const lengthmax=3;
+            const lengthmax=30;
             var prenom=document.getElementById("title");
             if(event.target.matches(".title")){
                 const value = event.target.value;
@@ -104,11 +118,12 @@
                     event.target.value=value.substr(0,lengthmax);
                     return;
                 }
-                event.target.nextElementSibling.innerHTML=remainingChars+ "/3" +" characters remaining";
+                event.target.nextElementSibling.innerHTML=remainingChars+ "/30" +" characters remaining";
 
             }
         })
     })();
+
     </script>
 </body>
 </html>
