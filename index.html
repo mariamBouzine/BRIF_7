@@ -91,9 +91,10 @@
                 langue.style.borderColor="green"
                 
             }
-            if(!isNaN(Prix.value) )
+            /////////////////prix
+            if(Prix.value !=="" )
             {
-                if(Prix.value !=="")
+                if(!isNaN(Prix.value))
                 {
                     if(Prix.value>0)
                     {
@@ -105,12 +106,12 @@
                     }
                 }
                 else{
-                    msgPrix.innerHTML="stop";
+                    msgPrix.innerHTML="is not numbre";
                 }
                
             }
             else{
-                msgPrix.innerHTML="is not numbre";
+                msgPrix.innerHTML="stop";
             }
             
 
