@@ -91,12 +91,26 @@
                 langue.style.borderColor="green"
                 
             }
-            if(!isNaN(Prix.value) && Prix.value !=="" && Prix.value>0)
+            if(!isNaN(Prix.value) )
             {
-                msgPrix.innerHTML="valider";
+                if(Prix.value !=="")
+                {
+                    if(Prix.value>0)
+                    {
+                        msgPrix.innerHTML="valider";
+                    }
+                    else
+                    {
+                        msgPrix.innerHTML="nigatif";
+                    }
+                }
+                else{
+                    msgPrix.innerHTML="stop";
+                }
+               
             }
             else{
-                msgPrix.innerHTML="error";
+                msgPrix.innerHTML="is not numbre";
             }
             
 
