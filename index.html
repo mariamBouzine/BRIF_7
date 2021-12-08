@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="Form" name="Form">
+            <label>Son titre :</label> 
+            <input type="text" id="title" class="title" />
+            <p class="validation" ></p>
+            <br>
+            <label>Son auteur :</label>
+            <input type="text" id="auteur" class="title"  />
+            <p class="validation" ></p>
+            <br>
+            <label>Son prix :</label> 
+            <input type="text" id="prix" />
+            <p class="validation" ></p>
+            <br>
+            <label>Sa date de publication :</label> 
+            <input type="date" id="date" />
+            <p class="validation" ></p>
+            <br>
+            <label>Sa langue :</label>
+            <select id="langue" name="langue">
+                <option value="0">-- select langue--</option>
+                <option value="Français">Français</option>
+                <option value="Anglais">Anglais</option>
+                <option value="Arabe">Arabe</option>
+            </select>
+            <p id="lng" ></p>
+            <br>
+                <input type="radio" id="Roman" name="season" value="Roman" >
+                <label for="Roman">Roman</label>
+                <input type="radio" id="Essai" name="season" value="Essai" >
+                <label for="Essai">Essai</label>
+                <input type="radio" id="Bande-Dessinée" name="season" value="Bande-Dessinée" >
+                <label for="Bande-Dessinée">Bande-Dessinée</label>
+                <p id="radiobtn" ></p>
+                <p id="Error" ></p>
+                <br>
+                <input type='submit' value='Valider' id='btn'>
+     
+    </form>
+    <script>
+        var Titre = document.getElementById("title");
+        var Auteur = document.getElementById("auteur");
+        var Prix = document.getElementById("prix");
+        var date = document.getElementById("date");
+        var valida= document.getElementsByClassName("validation");
+        var radioCheck=document.getElementById("radiobtn");
+        var input = document.getElementsByTagName("input");
+
+        function validation(e){
+            
+            e.preventDefault();
+            for(var i = 0; i<input.length-4;i++){
+                if (input[i].value == ""){
+                    input[i].nextElementSibling.innerHTML="stop";
+                    
+                }
+                else{
+                    input[i].nextElementSibling.innerHTML="valider";
+                }
+            }
+            
+            var getSelectedValue = document.querySelector(   
+                 'input[name="season"]:checked');   
+                
+                 if(getSelectedValue != null) {   
+                   document.getElementById("radiobtn").innerHTML   
+                       = getSelectedValue.value   
+                       + " season is selected";   
+                }   
+                else {   
+                   document.getElementById("Error").innerHTML   
+                       = "*You have not selected any season";   
+                }   
+          
+                var check=document.getElementById("langue");
+                //var strUser=check.options[check.SelectedIndex].value;
+                if(strUser=="0")
+                {
+                    alert("ttttttt")
+                    return false;
+                    // document.getElementById("lng").innerHTML="plz select"
+                }
+
+        }
+        document.getElementsByTagName("form")[0].addEventListener('submit', validation);
+
+        (function(){ document.addEventListener("keyup", function(event){ 
+            const lengthmax=3;
+            var prenom=document.getElementById("title");
+            if(event.target.matches(".title")){
+                const value = event.target.value;
+                const valueLength =event.target.value.length;
+                const remainingChars=lengthmax-valueLength;
+                if(valueLength>lengthmax)
+                {
+                    event.target.value=value.substr(0,lengthmax);
+                    return;
+                }
+                event.target.nextElementSibling.innerHTML=remainingChars+ "/3" +" characters remaining";
+
+            }
+        })
+    })();
+    </script>
+</body>
+</html>
