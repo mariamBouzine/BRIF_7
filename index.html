@@ -161,16 +161,38 @@
                 cell4.innerHTML = date.value;
                 cell5.innerHTML = langue.options[langue.selectedIndex].value;
                 cell6.innerHTML= CellType;
-                cell7.innerHTML=" <input type='submit' value='Valider'>"
-                + "<input type='submit' value='Valider' id='btn'>";
-               
+                cell7.innerHTML='<input type="submit" value="Edit">'
+                + '<input type="submit" onclick="deleteRow(this)"  value="Delete" id="btn">';
+                selectedRowToInput();
         }
 
     }
         document.getElementsByTagName("form")[0].addEventListener('submit', validation);
+        function deleteRow(r) {
+                var i = r.parentNode.parentNode.rowIndex;
+                table.deleteRow(i);
+            }
 
 //////////////////////////////////////////////////////////////////////////////////
-           
+            function selectedRowToInput()
+            {
+                
+                for(var i = 1; i < table.rows.length; i++)
+                {
+                    table.rows[i].onclick = function()
+                    {
+                      // get the seected row index
+                      rIndex = this.rowIndex;
+                      Titre.value = this.cells[0].innerHTML;
+                      Auteur.value = this.cells[1].innerHTML;
+                      Prix.value = this.cells[2].innerHTML;
+                      date.value = this.cells[3].innerHTML;
+                      langue.value = this.cells[4].innerHTML;
+                      type.value = this.cells[5].innerHTML;
+                    };
+                }
+            }
+            selectedRowToInput();
 
         ///////////chaînes de caractères d'une longueur maximale de 30
         (function(){ document.addEventListener("keyup", function(event){ 
