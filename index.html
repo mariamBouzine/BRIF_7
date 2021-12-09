@@ -90,10 +90,10 @@
                  'input[name="season"]:checked');   
                 
             if(getSelectedValue != null) {   
-                document.getElementById("radiobtn").innerHTML = getSelectedValue.value + " season is selected";   
+                document.getElementById("radiobtn").innerHTML = getSelectedValue.value + "type  is selected";   
             }   
             else {   
-                document.getElementById("radiobtn").innerHTML = "*You have not selected any season";   
+                document.getElementById("radiobtn").innerHTML = "*You have not selected any type";   
             } 
             
             //////require drop
@@ -129,7 +129,7 @@
             else{
                 msgPrix.innerHTML="stop";
             }
-            ////////////////////////////////
+            ///////////////table/////////////////
 
             var newRow = table.insertRow(-1);
                     cell1 = newRow.insertCell(0);
@@ -138,6 +138,7 @@
                     cell4 = newRow.insertCell(3);
                     cell5 = newRow.insertCell(4);
                     cell6 = newRow.insertCell(5);
+
                 var CellType="";
                 for(i=0;i<type.length;i++)
                 {
