@@ -70,15 +70,17 @@
         var msgPrix=document.getElementById("msgPrix");
         var  table = document.getElementById("table");
         var type=document.getElementsByClassName("type");
+       
 
         function validation(e){
-            
+            var no_valide=0;
             //////require:
             e.preventDefault();
-            for(var i = 0; i<input.length-4;i++){
+            for(var i = 0; i<4;i++){
                 if (input[i].value == ""){
                     input[i].nextElementSibling.innerHTML="stop";
-                    input[i].style.borderColor="red"
+                    input[i].style.borderColor="red";
+                    no_valide++;
                 }
                 else{
                     // input[i].nextElementSibling.innerHTML="valider";
@@ -93,7 +95,8 @@
                 document.getElementById("radiobtn").innerHTML = getSelectedValue.value + "type  is selected";   
             }   
             else {   
-                document.getElementById("radiobtn").innerHTML = "*You have not selected any type";   
+                document.getElementById("radiobtn").innerHTML = "*You have not selected any type";  
+                no_valide++; 
             } 
             
             //////require drop
@@ -101,6 +104,7 @@
             {
                 lng.innerHTML="Please select an option!";
                 langue.style.borderColor="red"
+                no_valide++;
             }
             else{
                 lng.innerHTML="valider";
@@ -128,8 +132,12 @@
             }
             else{
                 msgPrix.innerHTML="stop";
+                no_valide++;
             }
             ///////////////table/////////////////
+        if(no_valide==0)
+        {
+
 
             var newRow = table.insertRow(-1);
                     cell1 = newRow.insertCell(0);
@@ -138,7 +146,7 @@
                     cell4 = newRow.insertCell(3);
                     cell5 = newRow.insertCell(4);
                     cell6 = newRow.insertCell(5);
-
+                    cell7 = newRow.insertCell(6);
                 var CellType="";
                 for(i=0;i<type.length;i++)
                 {
@@ -153,10 +161,34 @@
                 cell4.innerHTML = date.value;
                 cell5.innerHTML = langue.options[langue.selectedIndex].value;
                 cell6.innerHTML= CellType;
-            }
+                cell7.innerHTML=" <input type='submit' value='Valider'>"
+                + "<input type='submit' value='Valider' id='btn'>";
+                selectedRowToInput();
+        }
+
+    }
         document.getElementsByTagName("form")[0].addEventListener('submit', validation);
 
-
+//////////////////////////////////////////////////////////////////////////////////
+            function selectedRowToInput()
+            {
+                
+                for(var i = 1; i < table.rows.length; i++)
+                {
+                    table.rows[i].onclick = function()
+                    {
+                      // get the seected row index
+                      rIndex = this.rowIndex;
+                      Titre.value = this.cells[0].innerHTML;
+                      Auteur.value = this.cells[1].innerHTML;
+                      Prix.value = this.cells[2].innerHTML;
+                      date.value = this.cells[3].innerHTML;
+                      langue.value = this.cells[4].innerHTML;
+                      type.value = this.cells[5].innerHTML;
+                    };
+                }
+            }
+            selectedRowToInput();
 
         ///////////chaînes de caractères d'une longueur maximale de 30
         (function(){ document.addEventListener("keyup", function(event){ 
