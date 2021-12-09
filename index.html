@@ -33,11 +33,11 @@
             </select>
             <p id="lng" ></p>
             <br>
-                <input type="radio" id="Roman" name="season" value="Roman" >
+                <input type="radio" id="Roman" name="season" value="Roman" class="type" >
                 <label for="Roman">Roman</label>
-                <input type="radio" id="Essai" name="season" value="Essai" >
+                <input type="radio" id="Essai" name="season" value="Essai" class="type" >
                 <label for="Essai">Essai</label>
-                <input type="radio" id="Bande-Dessinée" name="season" value="Bande-Dessinée" >
+                <input type="radio" id="Bande-Dessinée" name="season" value="Bande-Dessinée" class="type"  >
                 <label for="Bande-Dessinée">Bande-Dessinée</label>
                 <p id="radiobtn" ></p>
                 <p id="Error" ></p>
@@ -68,6 +68,7 @@
         var langue=document.getElementById("langue");
         var msgPrix=document.getElementById("msgPrix");
         var  table = document.getElementById("table");
+        var type=document.getElementsByClassName("type");
 
         function validation(e){
             
@@ -82,7 +83,7 @@
                     // input[i].nextElementSibling.innerHTML="valider";
                     input[i].style.borderColor="green"
                 }
-            }
+            }     
             //////require RADIO
             var getSelectedValue = document.querySelector(   
                  'input[name="season"]:checked');   
@@ -133,12 +134,22 @@
                     cell2 = newRow.insertCell(1);
                     cell3 = newRow.insertCell(2);
                     cell4 = newRow.insertCell(3);
-                    // cell5 = newRow.insertCell(5);
+                    cell5 = newRow.insertCell(4);
+                    cell6 = newRow.insertCell(5);
+                var CellType="";
+                for(i=0;i<type.length;i++)
+                {
+                    if(type[i].checked)
+                    {
+                        CellType=type[i].value;
+                    }
+                }
                 cell1.innerHTML = Titre.value;
                 cell2.innerHTML = Auteur.value;
                 cell3.innerHTML = Prix.value;
                 cell4.innerHTML = date.value;
-                // cell5.innerHTML = langue;
+                cell5.innerHTML = langue.options[langue.selectedIndex].value;
+                cell6.innerHTML= CellType;
 
         }
         document.getElementsByTagName("form")[0].addEventListener('submit', validation);
