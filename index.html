@@ -43,8 +43,20 @@
                 <p id="Error" ></p>
                 <br>
                 <input type='submit' value='Valider' id='btn'>
-     
+                <br>
     </form>
+    <br>
+    <table id="table" border="1">
+        <tr>
+            <th>Son titre</th>
+            <th>Son auteur</th>
+            <th>Son prix</th>
+            <th>Sa date de publication</th>
+            <th>Sa langue</th>
+            <th>Son type</th>
+        </tr>
+
+    </table>
     <script>
         var Titre = document.getElementById("title");
         var Auteur = document.getElementById("auteur");
@@ -55,6 +67,8 @@
         var input = document.getElementsByTagName("input");
         var langue=document.getElementById("langue");
         var msgPrix=document.getElementById("msgPrix");
+        var  table = document.getElementById("table");
+
         function validation(e){
             
             //////require:
@@ -113,7 +127,18 @@
             else{
                 msgPrix.innerHTML="stop";
             }
-            
+            ////////////////////////////////
+            var newRow = table.insertRow(-1);
+                    cell1 = newRow.insertCell(0);
+                    cell2 = newRow.insertCell(1);
+                    cell3 = newRow.insertCell(2);
+                    cell4 = newRow.insertCell(3);
+                    // cell5 = newRow.insertCell(5);
+                cell1.innerHTML = Titre.value;
+                cell2.innerHTML = Auteur.value;
+                cell3.innerHTML = Prix.value;
+                cell4.innerHTML = date.value;
+                // cell5.innerHTML = langue;
 
         }
         document.getElementsByTagName("form")[0].addEventListener('submit', validation);
