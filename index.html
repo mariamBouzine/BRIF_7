@@ -54,6 +54,7 @@
             <th>Sa date de publication</th>
             <th>Sa langue</th>
             <th>Son type</th>
+            <th></th>
         </tr>
 
     </table>
@@ -129,6 +130,7 @@
                 msgPrix.innerHTML="stop";
             }
             ////////////////////////////////
+
             var newRow = table.insertRow(-1);
                     cell1 = newRow.insertCell(0);
                     cell2 = newRow.insertCell(1);
@@ -150,8 +152,7 @@
                 cell4.innerHTML = date.value;
                 cell5.innerHTML = langue.options[langue.selectedIndex].value;
                 cell6.innerHTML= CellType;
-
-        }
+            }
         document.getElementsByTagName("form")[0].addEventListener('submit', validation);
 
 
