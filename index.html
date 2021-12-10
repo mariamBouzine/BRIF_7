@@ -209,6 +209,13 @@
             Prix.value= R.cells[2].innerHTML;
             date.value= R.cells[3].innerHTML;
             langue.value=R.cells[4].innerHTML;
+            for(i=0;i<type.length;i++)
+                {
+                    if(R.cells[5].innerHTML==type[i].value)
+                    {
+                        type[i].checked=true;
+                    }
+                }
             
             
         }
