@@ -189,7 +189,14 @@
         for(var i = 0; i<4;i++){
             input[i].value = "";
             
-        }  
+        } 
+        langue.value="-- select langue--"; 
+        var x = document.getElementsByName("season");
+            var i;
+            for (i = 0; i < x.length; i++) {
+            if (x[i].type == "radio") {
+            x[i].checked = false;
+            } }
 
     }
         document.getElementsByTagName("form")[0].addEventListener('submit', validation);
@@ -202,6 +209,7 @@
         
           
         function EditRow(r){
+
             var i = r.parentNode.parentNode.rowIndex;
             var R=table.rows[i];
             Titre.value = R.cells[0].innerHTML;
