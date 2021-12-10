@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: url('/img/background.jpg');
+    background-size: 100%;
+}
+#Form{
+    background-color: #eccba2;
+    width: 35%;
+    border-radius: 30px;
+    line-height: 31px;
+    margin-left: 88px;
+}
+
+.box{
+    margin-top: 80px;
+
+}
+.box .MiniBox{
+    margin-left: 70px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+   
+}
+.box .MiniBox #lbl{
+    margin-top: 30PX;
+}
+.box .MiniBox input{
+    border: 1px;
+    border-radius: 10px;
+    height: 30px;
+    width: 270px;
+    border-style: groove;
+    font-weight: 12px;
+}
+
+.box .MiniBox select{
+    border: 1px;
+    border-style: groove;
+    border-radius: 10px;
+    height: 30px;
+    width: 270px;
+}
+.box .radio input{
+    border-radius: 10px;
+    height: 20px;
+    width: 20px;
+    border-style: groove;
+    margin-left: 45px;
+}
+
+#btn{
+    border: 0;
+    position: absolute;
+    left: 360px;
+    width: 100px;
+    background-color: #996d56;
+    color: #fff;
+
+}
+#btn:hover{
+    background-color: #5f4437;
+    box-shadow: 0px 15px 20px rgba(95, 68, 68, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+  cursor: pointer;
+}
+table{
+    position: absolute;
+    left: 570PX;
+    top: 150px;
+    color: #fff;
+}
+table td, table th {
+    border: 1px solid #ddd;
+}
+table tr{background-color: rgb(153 109 86);}
+
+table tr:hover {background-color: rgb(201 124 75);}
+
+table th {
+  padding: 12px;
+  text-align: left;
+  background-color: rgb(95 68 55);
+  color: white;
+}
+.btn{
+    border: 0;
+    width: 70px;
+    background-color: #3d2b25;
+    color: #fff;
+    border-radius: 10px;
+    padding: 3px;
+    margin: 10px;
+    cursor: pointer;
+}

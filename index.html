@@ -4,27 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="Style.css">
     <title>Document</title>
 </head>
 <body>
+    <div>
     <form id="Form" name="Form">
-            <label>Son titre :</label> 
+        <div class="box">
+        <div class="MiniBox test">
+            <label id="lbl">Titre :</label><br>
             <input type="text" id="title" class="title" />
             <p class="validation" ></p>
+        </div>
             <br>
-            <label>Son auteur :</label>
+        <div class="MiniBox">
+            <label>Auteur :</label><br>
             <input type="text" id="auteur" class="title"  />
             <p class="validation" ></p>
+        </div>
             <br>
-            <label>Son prix :</label> 
+        <div class="MiniBox">
+            <label>Prix :</label> <br>
             <input type="text" id="prix" />
             <p class="validation" id="msgPrix" ></p>
+        </div>
             <br>
-            <label>Sa date de publication :</label> 
+        <div class="MiniBox">
+            <label>Date publication :</label><br> 
             <input type="date" id="date" />
             <p class="validation" ></p>
+        </div>
             <br>
-            <label>Sa langue :</label>
+        <div class="MiniBox">
+            <label>Langue :</label><br>
             <select id="langue" name="langue">
                 <option disabled selected hidden value="0">-- select langue--</option>
                 <option value="Français">Français</option>
@@ -32,32 +44,40 @@
                 <option value="Arabe">Arabe</option>
             </select>
             <p id="lng" ></p>
+        </div>
+        <br><br>
+        <div class="radio">        
+            <input type="radio" id="Roman" name="season" value="Roman" class="type" >
+            <label for="Roman">Roman</label>
+            <input type="radio" id="Essai" name="season" value="Essai" class="type" >
+            <label for="Essai">Essai</label>
+            <input type="radio" id="Bande-Dessinée" name="season" value="Bande-Dessinée" class="type"  >
+            <label for="Bande-Dessinée">Bande-Dessinée</label>
+            <p id="radiobtn" ></p>
+        </div>
+        <br>
+        <div class="MiniBox">
+            <input type='submit' value='Valider' id='btn'>
             <br>
-                <input type="radio" id="Roman" name="season" value="Roman" class="type" >
-                <label for="Roman">Roman</label>
-                <input type="radio" id="Essai" name="season" value="Essai" class="type" >
-                <label for="Essai">Essai</label>
-                <input type="radio" id="Bande-Dessinée" name="season" value="Bande-Dessinée" class="type"  >
-                <label for="Bande-Dessinée">Bande-Dessinée</label>
-                <p id="radiobtn" ></p>
-                <p id="Error" ></p>
-                <br>
-                <input type='submit' value='Valider' id='btn'>
-                <br>
+        </div>
+        <br> 
+        </div>
+        <br>
     </form>
     <br>
     <table id="table" border="1">
         <tr>
-            <th>Son titre</th>
-            <th>Son auteur</th>
-            <th>Son prix</th>
-            <th>Sa date de publication</th>
-            <th>Sa langue</th>
-            <th>Son type</th>
-            <th></th>
+            <th>Titre</th>
+            <th>Auteur</th>
+            <th>Prix</th>
+            <th>Date Publication</th>
+            <th>Langue</th>
+            <th>Type</th>
+            <th>Delete/Edit</th>
         </tr>
 
     </table>
+    
     <script>
         var Titre = document.getElementById("title");
         var Auteur = document.getElementById("auteur");
@@ -161,23 +181,30 @@
                 cell4.innerHTML = date.value;
                 cell5.innerHTML = langue.options[langue.selectedIndex].value;
                 cell6.innerHTML= CellType;
-                cell7.innerHTML='<input type="submit" value="Edit">'
-                + '<input type="submit" onclick="deleteRow(this)"  value="Delete" id="btn">';
+                cell7.innerHTML='<input type="submit" value="Edit" onclick="EditRow(this)" class="btn">'
+                + '<input type="submit" onclick="deleteRow(this)"  value="Delete" class="btn">';
                
         }
+        for(var i = 0; i<4;i++){
+            input[i].value = "";
+        }  
 
     }
         document.getElementsByTagName("form")[0].addEventListener('submit', validation);
-        
-/////////////////////////////////////DELETE/////////////////////////////////////////////
+
+        /////////////////////////////////////DELETE/////////////////////////////////////////////
         function deleteRow(r) {
                 var i = r.parentNode.parentNode.rowIndex;
                 table.deleteRow(i);
             }
-
-
-  
-
+        
+          
+        function EditRow(r){
+            Titre.value = r.cells[0].innerHTML;
+            Auteur.value= r.cells[1].innerHTML;
+            Prix.value= r.cells[2].innerHTML;
+            date.value= r.cells[3].innerHTML;
+            }
         ///////////chaînes de caractères d'une longueur maximale de 30
         (function(){ document.addEventListener("keyup", function(event){ 
             const lengthmax=30;
