@@ -240,7 +240,7 @@
         function EditRow(r){
             var i = r.parentNode.parentNode.rowIndex;
             var R=table.rows[i];
-            if(document.getElementById("btnEdit").value=="Edit"  ){   
+            if(r.value=="Edit"  ){   
                 Titre.value = R.cells[0].innerHTML;
                 Auteur.value= R.cells[1].innerHTML;
                 Prix.value= R.cells[2].innerHTML;
@@ -253,7 +253,7 @@
                         type[i].checked=true;
                     }
                 }  
-                document.getElementById("btnEdit").value="save"
+                r.value="save"
                 document.getElementById('btn').setAttribute("disabled","true");         
             } 
                      
@@ -270,7 +270,7 @@
                         R.cells[5].innerHTML=type[i].value;
                     }
                 } 
-                document.getElementById("btnEdit").value="Edit"
+                r.value="Edit"
                 document.getElementById('btn').removeAttribute("disabled");  
                 resetForm();          
             } 
