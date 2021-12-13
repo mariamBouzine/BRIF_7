@@ -5,79 +5,94 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" href="Style.css">
-    <title>Document</title>
+    <link rel="icon" type="image/png" href="img/logo.png" />
+    <title>MY BOOK</title>
 </head>
 <body>
+    <div class="titre">
+        <h1>MY BOOK</h1>
+    </div>
+
     <div>
     <form id="Form" name="Form">
+        <div class="tit">
+            <h3>Information</h3>
+        </div>
         <div class="box">
-        <div class="MiniBox test">
-            <label id="lbl">Titre :</label><br>
-            <input type="text" id="title" class="title" />
-            <p class="validation" ></p>
-        </div>
+            <!-- TITLE -->
+            <div class="MiniBox test">
+                <label id="lbl">Title :</label><br>
+                <input type="text" id="title" class="title" />
+                <p class="validation" ></p>
+            </div>
             <br>
-        <div class="MiniBox">
-            <label>Auteur :</label><br>
-            <input type="text" id="auteur" class="title"  />
-            <p class="validation" ></p>
-        </div>
+            <!-- AUTHOR -->
+            <div class="MiniBox">
+                <label>Author :</label><br>
+                <input type="text" id="auteur" class="title"  />
+                <p class="validation" ></p>
+            </div>
             <br>
-        <div class="MiniBox">
-            <label>Prix :</label> <br>
-            <input type="text" id="prix" />
-            <p class="validation" id="msgPrix" ></p>
-        </div>
+            <!-- PRICE -->
+            <div class="MiniBox">
+                <label>Price :</label> <br>
+                <input type="text" id="prix" />
+                <p class="validation" id="msgPrix" ></p>
+            </div>
             <br>
-        <div class="MiniBox">
-            <label>Date publication :</label><br> 
-            <input type="date" id="date" />
-            <p class="validation" ></p>
-        </div>
+            <!-- DATE -->
+            <div class="MiniBox">
+                <label>Publication Date :</label><br> 
+                <input type="date" id="date" />
+                <p class="validation" ></p>
+            </div>
             <br>
-        <div class="MiniBox">
-            <label>Langue :</label><br>
-            <select id="langue" name="langue">
-                <option disabled selected hidden value="0">-- select langue--</option>
-                <option value="Français">Français</option>
-                <option value="Anglais">Anglais</option>
-                <option value="Arabe">Arabe</option>
-            </select>
-            <p id="lng" ></p>
-        </div>
-        <br><br>
-        <div class="radio">        
-            <input type="radio" id="Roman" name="season" value="Roman" class="type" >
-            <label for="Roman">Roman</label>
-            <input type="radio" id="Essai" name="season" value="Essai" class="type" >
-            <label for="Essai">Essai</label>
-            <input type="radio" id="Bande-Dessinée" name="season" value="Bande-Dessinée" class="type"  >
-            <label for="Bande-Dessinée">Bande-Dessinée</label>
-            <p id="radiobtn" ></p>
-        </div>
-        <br>
-        <div class="MiniBox">
-            <input type='submit' value='Valider' id='btn'>
+            <!-- DROPDOWNLIST -->
+            <div class="MiniBox">
+                <label>Language :</label><br>
+                <select id="langue" name="langue">
+                    <option disabled selected hidden value="0">-- select langue--</option>
+                    <option value="Français">Français</option>
+                    <option value="Anglais">Anglais</option>
+                    <option value="Arabe">Arabe</option>
+                </select>
+                <p id="lng" ></p>
+            </div>
+            <br><br>
+            <!--RADIO BUTTON -->
+            <div class="radio">        
+                <input type="radio" id="Roman" name="season" value="Roman" class="type" id="radio1">
+                <label for="Roman">Roman</label>
+                <input type="radio" id="Essai" name="season" value="Essai" class="type" >
+                <label for="Essai">Essai</label>
+                <input type="radio" id="Bande-Dessinée" name="season" value="Bande-Dessinée" class="type"  >
+                <label for="Bande-Dessinée">Bande-Dessinée</label>
+                <p id="radiobtn" ></p>
+            </div>
             <br>
-        </div>
-        <br> 
+            <div class="MiniBox">
+                <input type='submit' value='Valider' id='btn'>
+                <br>
+            </div>
+            <br> 
         </div>
         <br>
     </form>
     <br>
+    <!-- TABLE -->
     <table id="table" border="1">
         <tr>
-            <th>Titre</th>
-            <th>Auteur</th>
-            <th>Prix</th>
-            <th>Date Publication</th>
-            <th>Langue</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Price</th>
+            <th>Publication Date</th>
+            <th>Language</th>
             <th>Type</th>
             <th>Delete/Edit</th>
         </tr>
-
     </table>
     
+    <!-- js  -->
     <script>
         var Titre = document.getElementById("title");
         var Auteur = document.getElementById("auteur");
@@ -94,33 +109,35 @@
        
 
         function validation(e){
-            var no_valide=0;
-            //////require:
+            //////required => textbox
+            var no_valide=0;     
             e.preventDefault();
             for(var i = 0; i<4;i++){
                 if (input[i].value == ""){
-                    input[i].nextElementSibling.innerHTML="stop";
+                    input[i].nextElementSibling.innerHTML="This field is required";
                     input[i].style.borderColor="red";
                     no_valide++;
                 }
                 else{
-                    // input[i].nextElementSibling.innerHTML="valider";
+                    //input[i].nextElementSibling.innerHTML="valider";
                     input[i].style.borderColor="green"
                 }
-            }     
-            //////require RADIO
+            }
+
+            //////require => radio button
             var getSelectedValue = document.querySelector(   
                  'input[name="season"]:checked');   
                 
             if(getSelectedValue != null) {   
-                document.getElementById("radiobtn").innerHTML = getSelectedValue.value + "type  is selected";   
+                //document.getElementById("radiobtn").innerHTML = getSelectedValue.value + "type  is selected";
+                // document.getElementById("radio1").style.borderColor= "green"  
             }   
             else {   
                 document.getElementById("radiobtn").innerHTML = "*You have not selected any type";  
                 no_valide++; 
             } 
             
-            //////require drop
+            //////require => dropdownlist
             if(langue.value=="0")
             {
                 lng.innerHTML="Please select an option!";
@@ -128,39 +145,45 @@
                 no_valide++;
             }
             else{
-                lng.innerHTML="valider";
+                //lng.innerHTML="valider";
                 langue.style.borderColor="green"
                 
             }
-            /////////////////prix
+            //// validation => price
             if(Prix.value !=="" )
             {
                 if(!isNaN(Prix.value))
                 {
                     if(Prix.value>0)
                     {
-                        msgPrix.innerHTML="valider";
+                        //msgPrix.innerHTML="valider";
+                        Prix.style.borderColor="green"
                     }
                     else
                     {
-                        msgPrix.innerHTML="nigatif";
+                        msgPrix.innerHTML="The number is negative";
+                        Prix.style.borderColor="red"
+                        no_valide++;
                     }
                 }
                 else{
-                    msgPrix.innerHTML="is not numbre";
+                    msgPrix.innerHTML="This is not number";
+                    Prix.style.borderColor="red"
+                    no_valide++;
                 }
                
             }
             else{
-                msgPrix.innerHTML="stop";
+                msgPrix.innerHTML="This field is required";
+                Prix.style.borderColor="red"
                 no_valide++;
             }
-            ///////////////table/////////////////
-        if(no_valide==0)
-        {
 
 
-            var newRow = table.insertRow(-1);
+            ///////////////insert table/////////////////
+            if(no_valide==0)
+            {
+                var newRow = table.insertRow(-1);
                     cell1 = newRow.insertCell(0);
                     cell2 = newRow.insertCell(1);
                     cell3 = newRow.insertCell(2);
@@ -182,55 +205,78 @@
                 cell4.innerHTML = date.value;
                 cell5.innerHTML = langue.options[langue.selectedIndex].value;
                 cell6.innerHTML= CellType;
-                cell7.innerHTML='<input type="submit" value="Edit" onclick="EditRow(this)" class="btn">'
-                + '<input type="submit" onclick="deleteRow(this)"  value="Delete" class="btn">';
-               
-        }
-        for(var i = 0; i<4;i++){
+                cell7.innerHTML='<input type="submit" value="Edit" onclick="EditRow(this)" class="btn" id="btnEdit">'
+                + '<input type="submit" onclick="deleteRow(this)"  value="Delete" class="btn" id="btnDelete">';
+                resetForm();
+            }
+    }
+    document.getElementsByTagName("form")[0].addEventListener('submit', validation);
+
+    //////////emptying textbox 
+        function resetForm(){
+            for(var i = 0; i<4;i++){
             input[i].value = "";
             
-        } 
-        langue.value="-- select langue--"; 
-        var x = document.getElementsByName("season");
+            } 
+             langue.value="-- select langue--"; 
+            var x = document.getElementsByName("season");
             var i;
             for (i = 0; i < x.length; i++) {
             if (x[i].type == "radio") {
             x[i].checked = false;
             } }
+        }
 
-    }
-        document.getElementsByTagName("form")[0].addEventListener('submit', validation);
-
-        /////////////////////////////////////DELETE/////////////////////////////////////////////
+    /////////////////////////////////////DELETE/////////////////////////////////////////////
         function deleteRow(r) {
-                var i = r.parentNode.parentNode.rowIndex;
-                table.deleteRow(i);
-            }
-        
-          
+                if(confirm('Are you sure to delete this record ?')){
+                    var i = r.parentNode.parentNode.rowIndex;
+                    table.deleteRow(i);
+                }
+        }    
+    /////////////////////////////////////EDIT/////////////////////////////////////////////      
         function EditRow(r){
-
             var i = r.parentNode.parentNode.rowIndex;
             var R=table.rows[i];
-            Titre.value = R.cells[0].innerHTML;
-            Auteur.value= R.cells[1].innerHTML;
-            Prix.value= R.cells[2].innerHTML;
-            date.value= R.cells[3].innerHTML;
-            langue.value=R.cells[4].innerHTML;
-            for(i=0;i<type.length;i++)
+            if(document.getElementById("btnEdit").value=="Edit"  ){   
+                Titre.value = R.cells[0].innerHTML;
+                Auteur.value= R.cells[1].innerHTML;
+                Prix.value= R.cells[2].innerHTML;
+                date.value= R.cells[3].innerHTML;
+                langue.value=R.cells[4].innerHTML;
+                for(i=0;i<type.length;i++)
                 {
                     if(R.cells[5].innerHTML==type[i].value)
                     {
                         type[i].checked=true;
                     }
-                }
-            
-            
+                }  
+                document.getElementById("btnEdit").value="save"
+                document.getElementById('btn').setAttribute("disabled","true");         
+            } 
+                     
+            else{
+                R.cells[0].innerHTML = Titre.value;
+                R.cells[1].innerHTML =  Auteur.value;
+                R.cells[2].innerHTML =  Prix.value;
+                R.cells[3].innerHTML =  date.value;
+                R.cells[4].innerHTML =  langue.value;
+                for(i=0;i<type.length;i++)
+                {
+                    if(type[i].checked==true)
+                    {
+                        R.cells[5].innerHTML=type[i].value;
+                    }
+                } 
+                document.getElementById("btnEdit").value="Edit"
+                document.getElementById('btn').removeAttribute("disabled");  
+                resetForm();          
+            } 
         }
-        ///////////chaînes de caractères d'une longueur maximale de 30
+                  
+        //////character strings with a maximum length of 30
         (function(){ document.addEventListener("keyup", function(event){ 
             const lengthmax=30;
-            var prenom=document.getElementById("title");
             if(event.target.matches(".title")){
                 const value = event.target.value;
                 const valueLength =event.target.value.length;
@@ -241,7 +287,6 @@
                     return;
                 }
                 event.target.nextElementSibling.innerHTML=remainingChars+ "/30" +" characters remaining";
-
             }
         })
     })();

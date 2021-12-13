@@ -1,22 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Corinthia:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Corinthia:wght@700&family=Rajdhani:wght@500&display=swap');
 *{
     margin: 0;
     padding: 0;
+   
 }
 body{
-    background-image: url('/img/background.jpg');
+    background-image: url('img/background.jpg');
     background-size: 100%;
+    font-family: 'Abel', sans-serif;
+    font-family: 'Corinthia', cursive;
+    font-family: 'Rajdhani', sans-serif;
+   
 }
 #Form{
     background-color: #eccba2;
     width: 35%;
     border-radius: 30px;
-    line-height: 31px;
+    line-height: 25px;
     margin-left: 88px;
+    margin-top: 100px;
 }
 
 .box{
-    margin-top: 80px;
-
+    margin-top: 10px;
+ 
 }
 .box .MiniBox{
     margin-left: 70px;
@@ -49,16 +57,18 @@ body{
     height: 20px;
     width: 20px;
     border-style: groove;
-    margin-left: 45px;
+    margin-left: 50px;
 }
 
 #btn{
     border: 0;
     position: absolute;
-    left: 360px;
+    left: 390px;
     width: 100px;
+    height: 40px;
     background-color: #996d56;
     color: #fff;
+    margin-top: 12px;
 
 }
 #btn:hover{
@@ -70,8 +80,8 @@ body{
 }
 table{
     position: absolute;
-    left: 570PX;
-    top: 150px;
+    left: 656PX;
+    top: 357px;
     color: #fff;
 }
 table td, table th {
@@ -94,6 +104,33 @@ table th {
     color: #fff;
     border-radius: 10px;
     padding: 3px;
-    margin: 10px;
+    margin: 15px;
     cursor: pointer;
+}
+#radiobtn{
+    position: absolute;
+    left: 130px;
+}
+.titre{
+    font-family: 'Corinthia', cursive;
+    color: #fff;
+    font-size: 60px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 63px;
+}
+
+.tit{
+    color: #9e7a66;
+    font-size: 30px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.tit h3{
+    margin-top: 40px;
 }
